@@ -12,7 +12,7 @@ import pickle
 import numpy as np
 
 # Load the trained model
-with open('knn_pickle', 'rb') as r:
+with open('KNN_pickel', 'rb') as r:
     model = pickle.load(r)
 
 st.title("Diabetes Predictor")
