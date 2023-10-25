@@ -12,8 +12,8 @@ import pickle
 import numpy as np
 
 # Load the trained model
-with open('https://github.com/umam123/Diabetes/blob/d529b7c79d3fc5ba46708882902c693f96afed22/KNN_pickel', 'rb') as r:
-    model = pickle.load('r')
+with open ('/workspaces/Diabetes/KNN_pickel', 'rb') as r : 
+    model = pickle.load(r)
 
 st.title("Diabetes Predictor")
 
@@ -26,6 +26,7 @@ bmi = st.number_input("BMI", min_value=0)
 riwayat = st.number_input("DiabetesPedigreeFunction", min_value=0)
 umur = st.number_input("Age", min_value=0)
 
+st.text("Enter your data and click the 'Predict' button to see the result.")
 if st.button("Predict"):
     data = np.array([melahirkan, glukosa, darah, kulit, insulin, bmi, riwayat, umur]).reshape(1, -1)
     isDiabetes = model.predict(data)
@@ -35,4 +36,4 @@ if st.button("Predict"):
     else:
         st.write("The model predicts that you don't have diabetes.")
 
-st.text("Enter your data and click the 'Predict' button to see the result.")
+
