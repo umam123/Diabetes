@@ -12,8 +12,8 @@ import pickle
 import numpy as np
 
 # Load the trained model
-with open('KNN_pickel', 'rb') :
-    model = pickle.load('KNN_pickel')
+with open('https://github.com/umam123/Diabetes/blob/d529b7c79d3fc5ba46708882902c693f96afed22/KNN_pickel', 'rb') as r:
+    model = pickle.load('r')
 
 st.title("Diabetes Predictor")
 
