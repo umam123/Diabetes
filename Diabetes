@@ -1,0 +1,29 @@
+import streamlit as st
+import pickle
+import numpy as np
+
+# Load the trained model
+with open('knn_pickle', 'rb') as r:
+    model = pickle.load(r)
+
+st.title("Diabetes Predictor")
+
+melahirkan = st.number_input("Pregnancies", min_value=0)
+glukosa = st.number_input("Glucose", min_value=0)
+darah = st.number_input("BloodPressure", min_value=0)
+kulit = st.number_input("SkinThickness", min_value=0)
+insulin = st.number_input("Insulin", min_value=0)
+bmi = st.number_input("BMI", min_value=0)
+riwayat = st.number_input("DiabetesPedigreeFunction", min_value=0)
+umur = st.number_input("Age", min_value=0)
+
+if st.button("Predict"):
+    data = np.array([melahirkan, glukosa, darah, kulit, insulin, bmi, riwayat, umur]).reshape(1, -1)
+    isDiabetes = model.predict(data)
+
+    if isDiabetes[0] == 1:
+        st.write("The model predicts that you have diabetes.")
+    else:
+        st.write("The model predicts that you don't have diabetes.")
+
+st.text("Enter your data and click the 'Predict' button to see the result.")
