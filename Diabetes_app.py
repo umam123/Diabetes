@@ -16,7 +16,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import GridSearchCV
 
 # Load the trained model
-with open ('KNN_pickel.pkl', 'rb') as r : 
+pickle.load(open('KNN_pickel.pkl','rb')) as r 
+    
     model = pickle.load(r)
 
 st.title("Diabetes Predictor")
