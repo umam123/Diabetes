@@ -39,7 +39,14 @@ diab_diagnosis = ''
 
 
 # membuat tombol untuk prediksi
-if st.button("Predict"):
+if st.markdown(
+    """
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <button style="padding: 10px 20px;">Predict</button>
+    </div>
+    """,
+    unsafe_allow_html=True
+):
     data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
     diab_prediction = diabetes_model.predict(data)
 
