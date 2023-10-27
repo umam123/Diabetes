@@ -16,7 +16,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import GridSearchCV
 
 # Load the trained model
-with open('KNN_pickel.pkl', 'rb') as file:
+with open('KNN_pickel.sav', 'rb') as file:
     
     model = pickle.load(file)
 
