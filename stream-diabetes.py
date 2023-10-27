@@ -36,8 +36,7 @@ with col2 :
     Age = st.number_input ("Age", min_value=0)
 
 st.text("DPF = Number of family with diabetes/Total of family member")
-# code untuk prediksi
-diab_diagnosis = ''
+
 
 # membuat tombol untuk prediksi
 if st.button("Predict"):
