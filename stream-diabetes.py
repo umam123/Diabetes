@@ -46,5 +46,3 @@ if st.button("Predict"):
         st.write("The model predicts that you have diabetes.")
     else:
         st.write("The model predicts that you don't have diabetes.")
-        
-st.success(diab_diagnosis)
