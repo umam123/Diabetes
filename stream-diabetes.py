@@ -37,8 +37,12 @@ with col2 :
 # code untuk prediksi
 diab_diagnosis = ''
 
+# Create a container to center the button horizontally
+centered_container = st.container()
+# Center the button inside the container
+with centered_container:
 # membuat tombol untuk prediksi
-if st.button("Predict", key="centered_button", class="center")
+if st.button("Predict")
     data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
     diab_prediction = diabetes_model.predict(data)
 
