@@ -10,10 +10,7 @@ Original file is located at
 import streamlit as st
 import pickle
 import numpy as np
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
 
-from sklearn.model_selection import GridSearchCV
 
 # Load the trained model
 with open('KNN_pickel.sav', 'rb') as file:
