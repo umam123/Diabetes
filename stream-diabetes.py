@@ -39,17 +39,32 @@ st.text("DPF = Number of family with diabetes/Total of family member")
 # code untuk prediksi
 diab_diagnosis = ''
 
-# Create a container to center the button and result message
-centered_container = st.container()
+# Use HTML and CSS to center the button
+st.markdown(
+    """
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <button style="padding: 10px 20px;" id="predict-button">Predict</button>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
-# Center the button and result message inside the container
-with centered_container:
-    # Create a button to trigger the prediction
-    if st.button("Predict"):
-        data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
-        diab_prediction = diabetes_model.predict(data)
+# JavaScript to trigger the prediction on button click
+st.markdown(
+    """
+    <script>
+        document.getElementById("predict-button").onclick = function() {
+            var input_data = "Replace with your input data";  // You can get input data from a Streamlit widget
+            var data = JSON.parse(input_data);
+            var diab_prediction = diabetes_model.predict(data);
 
-        if diab_prediction[0] == 1:
-            st.write("The model predicts that you have diabetes.")
-        else:
-            st.write("The model predicts that you don't have diabetes.")
+            if (diab_prediction[0] === 1) {
+                alert("The model predicts that you have diabetes.");
+            } else {
+                alert("The model predicts that you don't have diabetes.");
+            }
+        }
+    </script>
+    """,
+    unsafe_allow_html=True,
+)
