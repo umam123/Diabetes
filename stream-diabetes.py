@@ -12,28 +12,28 @@ st.markdown("# <center>Diabetes Predictor</center>", unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 with col1 :
-    Pregnancies = st.number_input ('Pregnancies', min_value=0, max_value=9)
+    Pregnancies = st.number_input ("Pregnancies", min_value=0, max_value=9)
 
 with col2 :
-    Glucose = st.number_input ('Glucose', min_value=0)
+    Glucose = st.number_input ("Glucose", min_value=0)
 
 with col1 :
-    BloodPressure = st.number_input ('Blood Pressure', min_value=0)
+    BloodPressure = st.number_input ("Blood Pressure", min_value=0)
 
 with col2 :
-    SkinThickness = st.number_input ('Skin Thickness', min_value=0)
+    SkinThickness = st.number_input ("Skin Thickness", min_value=0)
 
 with col1 :
-    Insulin = st.number_input ('Insulin', min_value=0)
+    Insulin = st.number_input ("Insulin", min_value=0)
 
 with col2 :
-    BMI = st.number_input ('BMI', min_value=0.01)
+    BMI = st.number_input ("BMI", min_value=0.01)
 
 with col1 :
-    DiabetesPedigreeFunction = st.text_input ('Diabetes Pedigree Function', min_value=0.001)
+    DiabetesPedigreeFunction = st.number_input ("Diabetes Pedigree Function", min_value=0.001)
 
 with col2 :
-    Age = st.number_input ('Age', min_value=0)
+    Age = st.number_input ("Age", min_value=0)
 
 # code untuk prediksi
 diab_diagnosis = ''
