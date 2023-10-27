@@ -30,7 +30,8 @@ with col2 :
     BMI = st.number_input ("BMI", min_value=0.01)
 
 with col1 :
-    DiabetesPedigreeFunction = st.number_input ("Diabetes Pedigree Function", min_value=0.001)
+    st.text("DPF = Number of family with diabetes/Total of family member")
+    DiabetesPedigreeFunction = st.number_input ("Diabetes Pedigree Function (DPF)", min_value=0.001)
 
 with col2 :
     Age = st.number_input ("Age", min_value=0)
