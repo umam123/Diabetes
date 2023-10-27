@@ -39,13 +39,17 @@ st.text("DPF = Number of family with diabetes/Total of family member")
 # code untuk prediksi
 diab_diagnosis = ''
 
+# Create a container to center the button and result message
+centered_container = st.container()
 
-# membuat tombol untuk prediksi
-if st.button("Predict"):
-    data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
-    diab_prediction = diabetes_model.predict(data)
+# Center the button and result message inside the container
+with centered_container:
+    # Create a button to trigger the prediction
+    if st.button("Predict"):
+        data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
+        diab_prediction = diabetes_model.predict(data)
 
-    if diab_prediction[0] == 1:
-        st.write("The model predicts that you have diabetes.")
-    else:
-        st.write("The model predicts that you don't have diabetes.")
+        if diab_prediction[0] == 1:
+            st.write("The model predicts that you have diabetes.")
+        else:
+            st.write("The model predicts that you don't have diabetes.")
