@@ -1,8 +1,8 @@
-import pickle
+import joblib
 import streamlit as st
 
 # membaca model
-diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
+diabetes_model = joblib.load(open('knn_model.pkl', 'rb'))
 
 #judul web
 st.markdown("# <center>Diabetes Predictor</center>", unsafe_allow_html=True)
