@@ -1,5 +1,6 @@
-python-3.7
+pandas           : 1.5.3
+numpy            : 1.23.5
+scikit-learn
 streamlit
 pickle
-numpy
-sklearn
+pip              : 23.1.2
