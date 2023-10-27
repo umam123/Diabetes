@@ -28,7 +28,7 @@ umur = st.number_input("Age", min_value=0)
 
 st.text("Enter your data and click the 'Predict' button to see the result.")
 if st.button("Predict"):
-    data = np.array([melahirkan, glukosa, darah, kulit, insulin, bmi, riwayat, umur]).reshape(1, -1)
+    data = np.array([melahirkan, glukosa, darah, kulit, insulin, bmi, riwayat, Age]).reshape(1, -1)
     isDiabetes = model.predict(data)
 
     if isDiabetes[0] == 1:
