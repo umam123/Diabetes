@@ -38,7 +38,7 @@ with col2 :
 diab_diagnosis = ''
 
 # membuat tombol untuk prediksi
-if st.button("Predict"):
+if st.button("Predict", key="centered_button", class="center")
     data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
     diab_prediction = diabetes_model.predict(data)
 
