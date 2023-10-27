@@ -1,5 +1,6 @@
 import pickle
 import streamlit as st
+import numpy as np
 
 # membaca model
 diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
