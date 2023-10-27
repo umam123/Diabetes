@@ -65,10 +65,10 @@ round(accuracy_score(y_test,y_pred),4)
 
 import pickle
 
-with open('KNN_pickel','wb') as r :
+with open('KNN_pickel.sav','wb') as r :
   pickle.dump (knn_clf, r)
 
-with open ('KNN_pickel', 'rb') as r :
+with open ('KNN_pickel.sav', 'rb') as r :
   mknn_clf = pickle.load(r)
 
 y_pred = knn_clf.predict (X_test)
