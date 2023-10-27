@@ -2,7 +2,7 @@ import pickle
 import streamlit as st
 
 # membaca model
-diabetes_model = pickle.load(open('1.pkl', 'rb'))
+diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 
 #judul web
 st.markdown("# <center>Diabetes Predictor</center>", unsafe_allow_html=True)
