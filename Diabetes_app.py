@@ -4,7 +4,7 @@ import numpy as np
 
 
 # Load the trained model
-model = pickle.load(open('modeldiabetes.sav', 'rb'))
+model = pickle.load(open('modeldiabetes.sav'))
 
 
 
