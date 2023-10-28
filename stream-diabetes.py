@@ -47,6 +47,6 @@ with col4 :
         diab_prediction = diabetes_model.predict(data)
 # membuat tombol untuk prediksi
         if diab_prediction[0] == 1:
-            st.write("The model predicts that you have diabetes.")
+            st.write("The model predicts that you have diabetes.", text_align="center")
         else:
-            st.write("The model predicts that you don't have diabetes.")
+            st.write("The model predicts that you don't have diabetes.", text_align="center")
