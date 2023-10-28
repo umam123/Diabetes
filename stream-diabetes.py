@@ -1,6 +1,8 @@
 import pickle
 import streamlit as st
 import numpy as np
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 # membaca model
 diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
