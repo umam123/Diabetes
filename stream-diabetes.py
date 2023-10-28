@@ -45,9 +45,8 @@ with col4 :
     if st.button("Predict"):
         data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
         diab_prediction = diabetes_model.predict(data)
-        
+font_size = 12       
         if diab_prediction[0] == 1:
-            font_size = 12
             st.markdown(f"<h1 style='text-align: center; font-size: {font_size}px;'>The model predicts that you have diabetes.</h1>", unsafe_allow_html=True)
         else:
             st.markdown(f"<h1 style='text-align: center; font-size: {font_size}px;'>The model predicts that you don't have diabetes.</h1>", unsafe_allow_html=True)
