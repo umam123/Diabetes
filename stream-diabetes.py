@@ -10,7 +10,7 @@ diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 st.markdown("# <center>Diabetes Predictor</center>", unsafe_allow_html=True)
 
 #membagi kolom
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with col1 :
     Pregnancies = st.number_input ("Pregnancies", min_value=0, max_value=9)
@@ -40,11 +40,12 @@ st.text("DPF = Number of family with diabetes/Total of family member")
 
 
 # membuat tombol untuk prediksi
-if st.button("Predict"):
-    data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
-    diab_prediction = diabetes_model.predict(data)
+with col3 :
+    if st.button("Predict"):
+        data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
+        diab_prediction = diabetes_model.predict(data)
 
-    if diab_prediction[0] == 1:
-        st.write("The model predicts that you have diabetes.")
-    else:
-        st.write("The model predicts that you don't have diabetes.")
+        if diab_prediction[0] == 1:
+            st.write("The model predicts that you have diabetes.")
+        else:
+            st.write("The model predicts that you don't have diabetes.")
