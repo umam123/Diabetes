@@ -39,9 +39,9 @@ with col2 :
 st.text("DPF = Number of family with diabetes/Total of family member")
 
 #membagi kolom
-col1, col2, col3, col4, col5 = st.columns(5)
+col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 # membuat tombol untuk prediksi
-with col3 :
+with col4 :
     if st.button("Predict"):
         data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
         diab_prediction = diabetes_model.predict(data)
