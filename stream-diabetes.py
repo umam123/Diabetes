@@ -45,7 +45,8 @@ with col4 :
     if st.button("Predict"):
         data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
         diab_prediction = diabetes_model.predict(data)
-# membuat tombol untuk prediksi
+col1 = st.columns(1)
+with col1 :
         if diab_prediction[0] == 1:
             st.write("The model predicts that you have diabetes.", text_align="center")
         else:
