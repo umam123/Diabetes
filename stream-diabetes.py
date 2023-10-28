@@ -47,6 +47,7 @@ with col4 :
         diab_prediction = diabetes_model.predict(data)
         
         if diab_prediction[0] == 1:
-            st.text("<h1 style='text-align: center;'>The model predicts that you have diabetes.</h1>", unsafe_allow_html=True)
+            font_size = 12
+            st.markdown(f"<h1 style='text-align: center; font-size: {font_size}px;'>The model predicts that you have diabetes.</h1>", unsafe_allow_html=True)
         else:
-            st.text("<h1 style='text-align: center;'>The model predicts that you don't have diabetes.</h1>", unsafe_allow_html=True)
+            st.markdown(f"<h1 style='text-align: center; font-size: {font_size}px;'>The model predicts that you don't have diabetes.</h1>", unsafe_allow_html=True)
