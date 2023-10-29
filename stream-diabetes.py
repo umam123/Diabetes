@@ -2,9 +2,10 @@ import pickle
 import streamlit as st
 import numpy as np
 
-
+from sklearn.neighbors import KNeighborsClassifier
+model = KNeighborsClassifier()
+diabetes_model = model.load('knn_pickle (1)')
 # membaca model
-diabetes_model = pickle.load(open('knn_pickle (1)', 'rb'))
 font_size = 14  
 #judul web
 st.markdown("# <center>Diabetes Predictor</center>", unsafe_allow_html=True)
