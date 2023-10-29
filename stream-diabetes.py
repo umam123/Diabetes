@@ -1,10 +1,21 @@
 import pickle
 import streamlit as st
 import numpy as np
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
-with open('model', 'rb') as file:
-   diabetes_model = pickle.load(file)
+# Define the Google Sheets credentials
+scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_name('labs-376101-44ba700a0433.json', scope)
+client = gspread.authorize(creds)
+
+# Open the Google Spreadsheet by title
+spreadsheet = client.open('DataDiabetesUpdate')
+worksheet = spreadsheet.get_worksheet(0)  # You may need to change the worksheet index
+
+
 # membaca model
+diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 font_size = 14  
 #judul web
 st.markdown("# <center>Diabetes Predictor</center>", unsafe_allow_html=True)
@@ -39,8 +50,12 @@ with col2 :
 st.text("DPF = Number of family with diabetes/Total of family member")
 
 #membagi kolom
-col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
+col1, col2, col3, col4, col5 = st.columns(5)
 # membuat tombol untuk prediksi
+with col2 :
+    if st.button("Save"):
+        data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
+        worksheet.append_row(data)
 with col4 :
     if st.button("Predict"):
         data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
