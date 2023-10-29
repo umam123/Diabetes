@@ -1,8 +1,9 @@
-import joblib
+import pickle
 import streamlit as st
 import numpy as np
 
-diabetes_model = model.load('modelfix')
+with open('model', 'rb') as file:
+   diabetes_model = pickle.load(file)
 # membaca model
 font_size = 14  
 #judul web
