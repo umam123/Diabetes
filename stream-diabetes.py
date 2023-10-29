@@ -1,10 +1,8 @@
-import pickle
+import joblib
 import streamlit as st
 import numpy as np
 
-from sklearn.neighbors import KNeighborsClassifier
-model = KNeighborsClassifier()
-diabetes_model = model.load('knn_pickle (1)')
+diabetes_model = model.load('modelfix')
 # membaca model
 font_size = 14  
 #judul web
