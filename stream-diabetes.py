@@ -6,11 +6,11 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 # Define the Google Sheets credentials
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name('labs-376101-44ba700a0433.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('labs-376101-68482f60572e.json', scope)
 client = gspread.authorize(creds)
 
 # Open the Google Spreadsheet by title
-spreadsheet = client.open('DataDiabetesUpdate')
+spreadsheet = client.open('diabetes_public - Sheet1')
 worksheet = spreadsheet.get_worksheet(0)  # You may need to change the worksheet index
 
 
