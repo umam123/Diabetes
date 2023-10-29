@@ -4,7 +4,7 @@ import numpy as np
 
 
 # membaca model
-diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
+diabetes_model = pickle.load(open('knn_pickle (1)', 'rb'))
 font_size = 14  
 #judul web
 st.markdown("# <center>Diabetes Predictor</center>", unsafe_allow_html=True)
