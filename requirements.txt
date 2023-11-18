@@ -2,6 +2,5 @@ numpy
 pandas
 streamlit
 scikit-learn
-gspread
-oauth2client
-pip
+st-gsheets-connection
+datetime
