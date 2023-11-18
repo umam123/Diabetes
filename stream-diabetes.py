@@ -1,19 +1,12 @@
+from datetime import datetime
+import pandas as pd
 import pickle
 import streamlit as st
 import numpy as np
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from streamlit_gsheets import GSheetsConnection
 
-# Define the Google Sheets credentials
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name('labs-376101-68482f60572e.json', scope)
-client = gspread.authorize(creds)
-
-# Open the Google Spreadsheet by title
-spreadsheet = client.open('diabetes_public - Sheet1')
-worksheet = spreadsheet.get_worksheet(0)  # You may need to change the worksheet index
-
-
+# Establishing a Google Sheets connection
+conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 # membaca model
 diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 font_size = 14  
@@ -22,40 +15,61 @@ st.markdown("# <center>Diabetes Predictor</center>", unsafe_allow_html=True)
 
 #membagi kolom
 col1, col2 = st.columns(2)
-
+with col1 :
+    Name = st.text_input(label="Name*")
+with col2 :
+    Birth_Day = st.date_input(label="Birht Day*")
 with col1 :
     Pregnancies = st.number_input ("Pregnancies", min_value=0, max_value=9)
-
 with col2 :
     Glucose = st.number_input ("Glucose", min_value=0)
-
 with col1 :
     BloodPressure = st.number_input ("Blood Pressure", min_value=0)
-
 with col2 :
     SkinThickness = st.number_input ("Skin Thickness", min_value=0)
-
 with col1 :
     Insulin = st.number_input ("Insulin", min_value=0)
-
 with col2 :
     BMI = st.number_input ("BMI", min_value=0.01)
-
 with col1 :
     DiabetesPedigreeFunction = st.number_input ("Diabetes Pedigree Function (DPF)", min_value=0.001)
-
 with col2 :
     Age = st.number_input ("Age", min_value=0)
 
 st.text("DPF = Number of family with diabetes/Total of family member")
-
+st.markdown("**required*")
 #membagi kolom
 col1, col2, col3, col4, col5 = st.columns(5)
 # membuat tombol untuk prediksi
 with col2 :
+    
     if st.button("Save"):
-        data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
-        worksheet.append_row(data)
+            if not Name or not Birth_Day:
+                st.warning("Ensure all mandatory fields are filled.")
+               
+            else:
+                # Creating updated data entry
+                updated_diabetes_data = pd.DataFrame(
+                    [
+                        {
+                            "Name": Name,
+                            "Birth Day": Birth_Day.strftime("%Y-%m-%d"),
+                            "Pregnancies": Pregnancies,
+                            "Glucose" : Glucose,
+                            "Blood Pressure" : BloodPressure,
+                            "Skin Thickness" : SkinThickness,
+                            "Insulin" : Insulin,
+                            "BMI" : BMI,
+                            "Diabetes Pedigree Function (DPF)" : DiabetesPedigreeFunction,
+                            "Age" : Age,
+                        }
+                    ]
+                )
+                # Adding updated data to the dataframe
+                updated_df = pd.concat([updated_diabetes_data], ignore_index=True)
+                # Update google sheet the new diabetes data
+                conn.update(worksheet="Diabetes", data=updated_df)
+                st.success("Data Save")
 with col4 :
     if st.button("Predict"):
         data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
