@@ -24,6 +24,10 @@ with col1 :
 with col2 :
     Birth_Day = st.date_input(label="Birht Day*")
 with col1 :
+    Country = st.text_input(label="Country*")
+with col2 :
+    City = st.text_input(label="City*")
+with col1 :
     Pregnancies = st.number_input ("Pregnancies", min_value=0, max_value=9)
 with col2 :
     Glucose = st.number_input ("Glucose", min_value=0)
@@ -66,6 +70,8 @@ with col2 :
                             "BMI" : BMI,
                             "Diabetes Pedigree Function (DPF)" : DiabetesPedigreeFunction,
                             "Age" : Age,
+                            "Country" : Country,
+                            "City" : City,
                         }
                     ]
                 )
