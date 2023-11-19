@@ -8,7 +8,7 @@ from streamlit_gsheets import GSheetsConnection
 # Establishing a Google Sheets connection
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 # Fetch existing vendors data
-existing_data = conn.read(worksheet="Data_Diabetes", usecols=list(range(6)), ttl=5)
+existing_data = conn.read(worksheet="DataDiabetes", usecols=list(range(6)), ttl=5)
 existing_data = existing_data.dropna(how="all")
 
 # membaca model
@@ -72,7 +72,7 @@ with col2 :
                 # Adding updated data to the dataframe
                 updated_df = pd.concat([existing_data, updated_diabetes_data], ignore_index=True)
                 # Update google sheet the new diabetes data
-                conn.update(worksheet="Data_Diabetes", data=updated_df)
+                conn.update(worksheet="DataDiabetes", data=updated_df)
                 st.success("Data Save")
 with col4 :
     if st.button("Predict"):
