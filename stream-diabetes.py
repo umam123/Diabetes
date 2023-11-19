@@ -22,7 +22,7 @@ col1, col2 = st.columns(2)
 with col1 :
     Name = st.text_input(label="Name*")
 with col2 :
-    Birth_Day = st.date_input(label="Birht Day*", min_value=None, max_value=None)
+    Birth_Day = st.date_input(label="Birht Day*")
 with col1 :
     Country = st.text_input(label="Country*")
 with col2 :
