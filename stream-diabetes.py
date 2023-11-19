@@ -7,6 +7,10 @@ from streamlit_gsheets import GSheetsConnection
 
 # Establishing a Google Sheets connection
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
+# Fetch existing vendors data
+existing_data = conn.read(worksheet="Vendors", usecols=list(range(6)), ttl=5)
+existing_data = existing_data.dropna(how="all")
+
 # membaca model
 diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 font_size = 14  
@@ -66,9 +70,9 @@ with col2 :
                     ]
                 )
                 # Adding updated data to the dataframe
-                updated_df = pd.concat([updated_diabetes_data], ignore_index=True)
+                updated_df = pd.concat([existing_data, updated_diabetes_data], ignore_index=True)
                 # Update google sheet the new diabetes data
-                conn.update(worksheet="Diabetes", data=updated_df)
+                conn.update(worksheet="Data_Diabetes", data=updated_df)
                 st.success("Data Save")
 with col4 :
     if st.button("Predict"):
