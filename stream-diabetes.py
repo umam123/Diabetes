@@ -8,7 +8,7 @@ from streamlit_gsheets import GSheetsConnection
 # Establishing a Google Sheets connection
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 # Fetch existing vendors data
-existing_data = conn.read(worksheet="Vendors", usecols=list(range(6)), ttl=5)
+existing_data = conn.read(worksheet="Data_Diabetes", usecols=list(range(6)), ttl=5)
 existing_data = existing_data.dropna(how="all")
 
 # membaca model
