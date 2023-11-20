@@ -72,7 +72,6 @@ with col2 :
                             "Age" : Age,
                             "Country" : Country,
                             "City" : City,
-                            "Prediction" : diabetes_model.predict(data),
                             
                         }
                     ]
@@ -85,7 +84,7 @@ with col2 :
 with col4 :
     if st.button("Predict"):
         data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
-        Prediction = diabetes_model.predict("Prediction", data)
+        Prediction = diabetes_model.predict(data)
         if Prediction[0] == 1:
             st.markdown(f"<h1 style='text-align: center; font-size: {font_size}px;'>The model predicts that you have diabetes.</h1>", unsafe_allow_html=True)
         else:
