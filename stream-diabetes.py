@@ -50,6 +50,14 @@ st.markdown("**required*")
 col1, col2, col3, col4, col5 = st.columns(5)
 # membuat tombol untuk prediksi
 with col2 :
+    if st.button("Predict"):
+        data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
+        Prediction = diabetes_model.predict(data)
+        if Prediction[0] == 1:
+            st.markdown(f"<h1 style='text-align: center; font-size: {font_size}px;'>The model predicts that you have diabetes.</h1>", unsafe_allow_html=True)
+        else:
+            st.markdown(f"<h1 style='text-align: center; font-size: {font_size}px;'>The model predicts that you don't have diabetes.</h1>", unsafe_allow_html=True)
+with col4 :
     
     if st.button("Save"):
             if not Name or not Birth_Day:
@@ -81,11 +89,3 @@ with col2 :
                 # Update google sheet the new diabetes data
                 conn.update(worksheet="DataDiabetes", data=updated_df)
                 st.success("Data Save")
-with col4 :
-    if st.button("Predict"):
-        data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]).reshape(1, -1)
-        Prediction = diabetes_model.predict(data)
-        if Prediction[0] == 1:
-            st.markdown(f"<h1 style='text-align: center; font-size: {font_size}px;'>The model predicts that you have diabetes.</h1>", unsafe_allow_html=True)
-        else:
-            st.markdown(f"<h1 style='text-align: center; font-size: {font_size}px;'>The model predicts that you don't have diabetes.</h1>", unsafe_allow_html=True)
