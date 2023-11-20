@@ -72,7 +72,6 @@ with col2 :
                             "Age" : Age,
                             "Country" : Country,
                             "City" : City,
-                            "Prediction" : Prediction,
                             
                         }
                     ]
