@@ -1,5 +1,5 @@
 numpy
-pandas==2.2.2
+pandas>=0.25
 streamlit>=1.22.0
 scikit-learn
 st-gsheets-connection
