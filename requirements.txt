@@ -1,6 +1,6 @@
 numpy==1.21.0
 pandas>=0.25
 streamlit>=1.33.0
-scikit-learn==1.5.1
+scikit-learn>=1.5.1
 st-gsheets-connection
 datetime
