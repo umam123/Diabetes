@@ -1,6 +1,6 @@
-pip install numpy==2.0.1
-pip install pandas==1.5.3
-pip install streamlit==1.36.0
-pip install scikit-learn==1.5.1
-pip install st-gsheets-connection==0.0.4
-pip install datetime==5.5
+pip install numpy
+pip install pandas
+pip install streamlit
+pip install scikit-learn
+pip install st-gsheets-connection
+pip install datetime
