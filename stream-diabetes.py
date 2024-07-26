@@ -1,5 +1,5 @@
 from datetime import datetime
-import pandas as pandas
+import pandas as pd
 import pickle
 import streamlit as st
 import numpy as np
@@ -65,7 +65,7 @@ with col4 :
                
             else:
                 # Creating updated data entry
-                updated_diabetes_data = pandas.DataFrame(
+                updated_diabetes_data = pd.DataFrame(
                     [
                         {
                             "Name": Name,
@@ -85,7 +85,7 @@ with col4 :
                     ]
                 )
                 # Adding updated data to the dataframe
-                updated_df = pandas.concat([existing_data, updated_diabetes_data], ignore_index=True)
+                updated_df = pd.concat([existing_data, updated_diabetes_data], ignore_index=True)
                 # Update google sheet the new diabetes data
                 conn.update(worksheet="DataDiabetes", data=updated_df)
                 st.success("Data Save")
